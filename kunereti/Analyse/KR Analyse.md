@@ -5,6 +5,7 @@ domaines:
 - recherche
 auteurs:
 - Michaël Launay
+- Sergio Arbarviro
 confidentialite: publique
 publication:
 - notes-publiques
