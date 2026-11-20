@@ -19,7 +19,7 @@ themes:
 - democratie
 - decentralisation
 - kuneagi
-resume: 'Analyse de Kunereti selon la phase d''analyse de la méthode 2TUP : acteurs, six cas d''utilisation, liste des 51 scénarios concrets, points que leur écriture a fait apparaître et apports des documents historiques de KuneAgi et de Nova-Ideo.'
+resume: 'Analyse de reteKuneAgi selon la phase d''analyse de la méthode 2TUP : acteurs, six cas d''utilisation, liste des 51 scénarios concrets, points que leur écriture a fait apparaître et apports des documents historiques de KuneAgi et de Nova-Ideo.'
 schema_version: 1
 uid: 01M7AK8G1JW85N21V6DZH8QJDQ
 date_creation: 2026-11-13
@@ -29,19 +29,19 @@ metadata_verifiees: false
 ---
 # Remarque générale
 
-Cette analyse applique à Kunereti le formalisme utilisé pour l'étude de cas du meetup du 28 mars 2024 ([[MU Analyse par chat GPT]]) : la phase d'analyse de la méthode 2TUP (*2 Track Unified Process*), qui repose sur les cas d'utilisation. On identifie d'abord les acteurs, les actions, les ressources et les concepts ; on en tire un glossaire métier ; puis on écrit des scénarios d'usage concrets, que l'on regroupe en cas d'utilisation. Écrire les scénarios revient à illustrer par avance le manuel d'utilisation.
+Cette analyse applique à reteKuneAgi le formalisme utilisé pour l'étude de cas du meetup du 28 mars 2024 ([[MU Analyse par chat GPT]]) : la phase d'analyse de la méthode 2TUP (*2 Track Unified Process*), qui repose sur les cas d'utilisation. On identifie d'abord les acteurs, les actions, les ressources et les concepts ; on en tire un glossaire métier ; puis on écrit des scénarios d'usage concrets, que l'on regroupe en cas d'utilisation. Écrire les scénarios revient à illustrer par avance le manuel d'utilisation.
 
 Comme pour le meetup, l'analyse a été menée conjointement par l'humain et l'IA. Les scénarios ont été rédigés par un assistant (Claude) à partir des deux notes du projet et doivent être relus : ils portent `metadata_verifiees: false`.
 
 > [!warning] Rien n'est implémenté
-> Kunereti est un projet. Les scénarios décrivent le comportement attendu, pas un logiciel existant. La communauté (la « Coopérative des Tilleuls »), ses membres (Alice, Bob, Chloé, Driss, Émile, Fatou) et leur proposition sur les vélos partagés sont inventés pour l'exemple.
+> reteKuneAgi est un projet. Les scénarios décrivent le comportement attendu, pas un logiciel existant. La communauté (la « Coopérative des Tilleuls »), ses membres (Alice, Bob, Chloé, Driss, Émile, Fatou) et leur proposition sur les vélos partagés sont inventés pour l'exemple.
 
 # Cahier des charges
 
 Le cahier des charges tient en deux notes :
 
-- [[présentation_kunereti]] : le projet raconté du point de vue de l'utilisateur, avec quatorze croquis d'écrans ;
-- [[kunereti]] : la conception détaillée (dépôts, fichiers, processus, votes, agents).
+- [[présentation_reteKuneAgi]] : le projet raconté du point de vue de l'utilisateur, avec quatorze croquis d'écrans ;
+- [[reteKuneAgi]] : la conception détaillée (dépôts, fichiers, processus, votes, agents).
 
 En une phrase : refaire KuneAgi (Nova-Ideo) **sans serveur central**. Les membres d'une communauté publient des contributions, dont des agents d'IA tirent des idées ; de petits groupes de travail co-écrivent des propositions par itérations, les amendent et les votent au jugement majoritaire ; tous les membres soutiennent ou rejettent ce qui est publié. Tout est fichier Markdown signé, dans des dépôts Git que chacun copie.
 
@@ -67,7 +67,7 @@ Voir [[KR Glossaire métier]].
 | Agent traducteur | Modèle de langage | Produit les traductions |
 | Agent veilleur | Modèle de langage | Signale ; ne masque jamais |
 | Exécutant | Humain ou tâche planifiée | Fait tourner un agent |
-| Application Kunereti | Système : mobile, poste de travail, ligne de commande | Cache Git et les clés, signe, synchronise, vérifie |
+| Application reteKuneAgi | Système : mobile, poste de travail, ligne de commande | Cache Git et les clés, signe, synchronise, vérifie |
 | Vérificateur | Système, hébergé hors des dépôts | Refuse toute écriture mal formée, mal signée ou illégale |
 | Forge | Système externe | Héberge les dépôts ; remplaçable |
 
@@ -309,7 +309,7 @@ Le parcours nominal d'une proposition enchaîne les scénarios 8 (contribution),
 
 ### 48. **Organiser un événement de discussion**
 - **Acteur** : Alice, membre
-- **Scénario** : Alice veut débattre de vive voix de la proposition sur les vélos. Elle annonce une réunion, attachée à la proposition : date, lieu ou lien de visioconférence, langue. L'événement est visible des non-membres, ce qui en fait aussi un moyen de faire connaître la communauté. Kunereti annonce ; il ne tient pas les agendas et n'héberge pas la réunion.
+- **Scénario** : Alice veut débattre de vive voix de la proposition sur les vélos. Elle annonce une réunion, attachée à la proposition : date, lieu ou lien de visioconférence, langue. L'événement est visible des non-membres, ce qui en fait aussi un moyen de faire connaître la communauté. reteKuneAgi annonce ; il ne tient pas les agendas et n'héberge pas la réunion.
 - **Fiche** : [[KR Scénario 48 Organiser un événement de discussion]]
 
 ## Cas d'utilisation 5 : Soutenir et décider
@@ -363,7 +363,7 @@ Le parcours nominal d'une proposition enchaîne les scénarios 8 (contribution),
 
 ### 37. **Importer une instance KuneAgi**
 - **Acteur** : Driss, autorité, et l'administrateur de l'instance KuneAgi
-- **Scénario** : La coopérative utilisait une instance KuneAgi. Driss veut reprendre son contenu dans Kunereti. L'administrateur exporte la base ; un outil d'import convertit les propositions en dépôts de groupes et les idées en contributions. Ce qui a été fait sur le serveur n'a jamais été signé : il est importé comme une archive, attestée par l'autorité qui importe, et les membres doivent créer leurs clés pour continuer.
+- **Scénario** : La coopérative utilisait une instance KuneAgi. Driss veut reprendre son contenu dans reteKuneAgi. L'administrateur exporte la base ; un outil d'import convertit les propositions en dépôts de groupes et les idées en contributions. Ce qui a été fait sur le serveur n'a jamais été signé : il est importé comme une archive, attestée par l'autorité qui importe, et les membres doivent créer leurs clés pour continuer.
 - **Fiche** : [[KR Scénario 37 Importer une instance KuneAgi]]
 
 ### 51. **Faire vérifier un scrutin par un tiers**
@@ -391,9 +391,9 @@ Le parcours nominal d'une proposition enchaîne les scénarios 8 (contribution),
 14. **Import (scénario 37).** Les comptes importés deviennent des fiches « à réclamer », état qui n'existe pas dans le processus d'admission décrit ; les scrutins passés ne sont pas rejouables.
 
 15. **Durées et seuils repris de KuneAgi.** Trois vérificateurs, trois modérateurs, sept jours d'examen, trois signalements et trois publications par semaine, six mois de quarantaine, demi-vie de 180 jours pour la note de comportement : ce sont les valeurs de KuneAgi, données comme valeurs par défaut de la charte, pas des décisions de conception.
-16. **Approbation de la version d'ensemble (scénarios 20 et 21).** Les spécifications de 2011 faisaient voter le groupe deux fois : sur chaque amendement, puis sur la version qui résultait de leur fusion, que le groupe pouvait rejeter. Kunereti, comme Nova-Ideo, ne vote que les amendements puis « publier ou continuer ». Des amendements adoptés séparément peuvent pourtant donner un texte incohérent : faut-il un vote sur l'ensemble ?
+16. **Approbation de la version d'ensemble (scénarios 20 et 21).** Les spécifications de 2011 faisaient voter le groupe deux fois : sur chaque amendement, puis sur la version qui résultait de leur fusion, que le groupe pouvait rejeter. reteKuneAgi, comme Nova-Ideo, ne vote que les amendements puis « publier ou continuer ». Des amendements adoptés séparément peuvent pourtant donner un texte incohérent : faut-il un vote sur l'ensemble ?
 17. **Membres inactifs (scénario 46).** Rien ne dit quand un membre qui ne signe plus rien cesse d'être tiré au sort et de compter dans les quorums.
-18. **Se retrouver sans les forges.** Les spécifications de 2011 prévoyaient un annuaire réparti : chaque membre gardait l'adresse de cinq autres, pour que le collectif survive à son infrastructure. Kunereti dit qu'aucune forge n'est indispensable, mais pas comment des membres qui ne se connaissent que par pseudonyme se retrouvent si toutes disparaissent.
+18. **Se retrouver sans les forges.** Les spécifications de 2011 prévoyaient un annuaire réparti : chaque membre gardait l'adresse de cinq autres, pour que le collectif survive à son infrastructure. reteKuneAgi dit qu'aucune forge n'est indispensable, mais pas comment des membres qui ne se connaissent que par pseudonyme se retrouvent si toutes disparaissent.
 
 # Ce que les documents de KuneAgi et de Nova-Ideo ont apporté
 
@@ -421,9 +421,9 @@ Les scénarios 1 à 37 ont été écrits à partir des deux notes du projet. Ils
 | Modes de décision d'un groupe, avertissement avant chaque échéance, retour au recrutement sous le seuil | KuneAgi 2011 | Compléments aux scénarios 44 et 46 |
 | Recommandations pour les débats : rester dans le sujet, parler en son nom, citer ses sources, critiquer les textes et non les personnes | KuneAgi 2011 | Matière pour la charte, et critère des modérateurs (scénarios 28 et 41) |
 
-Les spécifications de 2011 proposaient une valeur par défaut pour chaque constante. Elles sont rappelées ici parce qu'elles donnent un ordre de grandeur, mûri à l'époque, à des durées que la note de conception de Kunereti ne chiffre pas.
+Les spécifications de 2011 proposaient une valeur par défaut pour chaque constante. Elles sont rappelées ici parce qu'elles donnent un ordre de grandeur, mûri à l'époque, à des durées que la note de conception de reteKuneAgi ne chiffre pas.
 
-| Règle | Valeur proposée en 2011 | Dans Kunereti |
+| Règle | Valeur proposée en 2011 | Dans reteKuneAgi |
 | --- | --- | --- |
 | Participants d'un groupe, au plus | 20 | 12 (valeur de Nova-Ideo) |
 | Participants pour qu'un groupe soit actif | 7 pour une proposition de politique publique, 5 pour une proposition d'investissement, 3 pour un tableau blanc local | 3 (valeur de KuneAgi en 2017) |
@@ -449,7 +449,7 @@ La confrontation confirme les valeurs par défaut reprises de l'article de 2017 
 
 Elle montre enfin trois endroits où le passage au réparti ne va pas de soi, parce que KuneAgi s'appuyait sur ce qu'un serveur sait cacher :
 
-- **L'unicité des comptes.** KuneAgi refusait une inscription quand le même état civil existait déjà dans une base nominative séparée. Kunereti ne tient aucun registre d'identités : l'unicité et la quarantaine ne reposent que sur la mémoire des membres vérificateurs (scénarios 3 et 38).
+- **L'unicité des comptes.** KuneAgi refusait une inscription quand le même état civil existait déjà dans une base nominative séparée. reteKuneAgi ne tient aucun registre d'identités : l'unicité et la quarantaine ne reposent que sur la mémoire des membres vérificateurs (scénarios 3 et 38).
 - **L'anonymat de ceux qui jugent.** Vérificateurs, modérateurs et pairs qui s'apprécient étaient anonymes parce que le serveur taisait leur nom. Un avis signé est attribuable à un pseudonyme (scénarios 3, 41 et 45).
 - **L'effacement.** KuneAgi effaçait l'identité et réattribuait les contenus. Un historique signé et copié ne s'efface pas (scénario 38).
 
@@ -457,11 +457,11 @@ Ont été **écartés ou laissés de côté**, et le sont en connaissance de cau
 
 - le jeton à deux sens (« problème important » ou « problème important et solution de qualité ») et la délégation de jetons des spécifications de 2011 : Nova-Ideo a retenu le soutien et l'opposition ;
 - le classement de documents concurrents par la méthode de Schulze, et le réglage des constantes par la médiane des souhaits des membres : relégués dès 2011, remplacés ici par le jugement majoritaire et le vote de la charte ;
-- les modes de décision au consensus et à l'unanimité, et le seuil de soutiens qui faisait retenir ou retirer automatiquement une proposition : Kunereti s'en remet au jugement majoritaire et à l'avis du comité ;
+- les modes de décision au consensus et à l'unanimité, et le seuil de soutiens qui faisait retenir ou retirer automatiquement une proposition : reteKuneAgi s'en remet au jugement majoritaire et à l'avis du comité ;
 - le rejet par le groupe de la version issue des amendements, qui entraînait sa dissolution : voir le point 16 ci-dessus ;
 - le palmarès des meilleurs contributeurs : contraire à l'esprit d'une idée qui n'appartient à personne ;
-- l'authentification unique vers d'autres outils (annuaire, guichet AlirPunkto) : hors du périmètre d'un outil sans serveur, mais la question « se servir de son identité Kunereti ailleurs » reste posée ;
-- le mode « boîte à idées simple », sans propositions ni groupes : c'est Kunereti réduit aux cas d'utilisation 2 et 5, à vérifier ;
+- l'authentification unique vers d'autres outils (annuaire, guichet AlirPunkto) : hors du périmètre d'un outil sans serveur, mais la question « se servir de son identité reteKuneAgi ailleurs » reste posée ;
+- le mode « boîte à idées simple », sans propositions ni groupes : c'est reteKuneAgi réduit aux cas d'utilisation 2 et 5, à vérifier ;
 - les mots-clés hiérarchiques, les modèles imposés de proposition, les sondages, les lettres d'information et les listes de diffusion, le tutoriel de première utilisation.
 
 Ne sont toujours pas couverts, faute de conception suffisante : le vote réellement secret, l'exclusion d'un membre de la communauté, la synchronisation sélective à grande échelle.
