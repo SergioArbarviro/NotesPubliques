@@ -5,11 +5,12 @@ domaines:
 - recherche
 auteurs:
 - Michaël Launay
+- Sergio Arbarviro
 confidentialite: publique
 publication:
 - notes-publiques
 rag: true
-titre: KR Glossaire métier
+titre: rKA Glossaire métier
 type: document
 themes:
 - genie-logiciel
@@ -17,7 +18,7 @@ themes:
 - democratie
 - decentralisation
 - kuneagi
-resume: 'Glossaire métier de Kunereti : communauté, membre, contribution, idée, proposition, amendement, scrutin, bulletin, mention, jeton, avis, agent et les autres termes du domaine.'
+resume: 'Glossaire métier de reteKuneAgi : communauté, membre, problème, proposition d'action, amendement, scrutin, bulletin, mention, jeton, agent et les autres termes du domaine.'
 schema_version: 1
 uid: 01M7AK890X92K64Q31SK54M489
 date_creation: 2026-11-13
@@ -27,16 +28,55 @@ metadata_verifiees: false
 ---
 
 - **Kunereti** : Outil de délibération et d'innovation participative réparti, sans serveur central. Il reprend les règles de Nova-Ideo et de KuneAgi et les fait reposer sur des dépôts de fichiers signés. Le projet s'est d'abord appelé « KuneAgi V2 ».
-- **reteKuneAgi** : Outil de démocratie délibérative réparti, appliquant certaines des règles de fonctionnement de Kunereti au cas particulier de l’élaboration et de la sélection des actions d’un collectif.
+- **reteKuneAgi** : Outil de démocratie délibérative réparti, appliquant certaines des règles de fonctionnement de Kunereti au cas particulier de l’élaboration et de la sélection des actions d’un collectif, décrit dans le présent document.
 - **KuneAgi, Nova-Ideo** : Les logiciels serveurs dont Kunereti reprend les concepts. Nova-Ideo date de 2014 ; KuneAgi en est la variante de la coopérative Cosmopolitical. Ils restent en service.
-- **Communauté** : L'ensemble des membres qui délibèrent ensemble sous une même charte. Techniquement, un dépôt de communauté et son QR code. Le dépôt contient : (1) la charte, (2) les clefs racines, (3) la liste des liens vers les dépôts des communautés auxquelles elle ouvre ses contenus en lecture, (4) dans le cas d’une admission robuste, la liste des hashcodes des triplets identifiants des membres.
-- **Charte** : Le texte et les règles de la communauté : conditions pour être membre, taille des groupes, nombre de groupes par membre, nombre de jetons, durées, quorums, méthode de vote, liste des étiquettes. Elle se modifie par un vote.
+- **Communauté** : L'ensemble des membres qui décident ensemble, démocratiquement, de leurs actions collectives en étant régulés par une même charte. Techniquement, un dépôt de communauté et son QR code. Le dépôt contient : 
+  1. la charte,
+  2. les clefs racines, 
+  3. la liste des membres, identifiés chacun par leur pseudonyme, leur clef publique, leur note de comportement coopératif, la date de dernière mise à jour de leur note de comportement coopératif, et :
+     - dans le cas d’une admission robuste, le hashcode de son triplet identifiant,
+     - dans le cas de l’activation de l’Annuaire Distribué, la liste des pseudonymes de ses N membres “aval” et des pseudonymes de ses N membres “amont”, chacun de ces membres étant numéroté de 1 à N (avec N = le nombre de membres “amont”, et donc aussi de membres “aval”, pour chaque membre dans l’Annuaire Distribué, défini dans la charte)
+  4. la liste des groupes de travail, créés, actifs et clos,
+  5. pour chaque membre, la liste des messages privés qui lui sont destinés,
+  6. la liste des Propositions d’Action sélectionnées, avec leur Problème correspondant
+  7. la liste des liens vers les dépôts des communautés auxquelles elle ouvre ses contenus en lecture.
+- **Charte** : Le texte et les règles de la communauté, décrite ci-dessous. Elle se modifie par un vote : 
+  - les principes de base gouvernant les contenus acceptables: périmètre fonctionnel, institutionnel, géographique, etc… orientations politiques ou philosophiques des actions que la communauté se propose d’engager, 
+  - les conditions pour être membre,
+  - les modèles de documents de Problème et de Proposition d’Action (ces modèles de documents sont découpés en sections), 
+  - la liste des étiquettes,
+  - les paramètres quantitatifs donnés ci-dessous :
+
+| Paramètre Quantitatif                                                                                                | Valeur par défaut                                                                                                                                                                                |
+|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Utilisation de l’Annuaire Distribué                                                                                  | Faux                                                                                                                                                                                             |
+| Nombre de membres “amont” (et donc aussi de membres “aval”) pour chaque membre dans l’Annuaire Distribué             | 5                                                                                                                                                                                                |
+| Participants d'un groupe, au plus                                                                                    | 12                                                                                                                                                                                               |
+| Quorum: nombre minimal de Participants pour qu'un groupe soit actif                                                  | 3                                                                                                                                                                                                |
+| Groupes par membre, et listes d'attente par membre                                                                   | 5 ; les listes d'attente ne sont pas plafonnées                                                                                                                                                  |
+| Nombre de vérificateurs d'identité; délai                                                                            | 3; 10 jours                                                                                                                                                                                      |
+| Nombre de modérateurs avant publication; délai pour voter                                                            | 3; 10 jours                                                                                                                                                                                      |
+| Nombre de contrôleurs de conformité; délai pour voter                                                                | 3; 10 jours                                                                                                                                                                                      |
+| Nombre maximal de signalements de contenus par periode glissante de 7 jours                                          | 7                                                                                                                                                                                                |
+| Durée par défaut du premier cycle de modifications                                                                   | 14 jours                                                                                                                                                                                         |
+| Durée d'un vote du groupe                                                                                            | Choisie par le groupe à chaque itération                                                                                                                                                         |
+| Majorité qualifiée                                                                                                   | 2/3                                                                                                                                                                                              |
+| Conditions pour qu’une Proposition d’Action soit sélectionnée                                                        | Le Problème auquel elle répond a reçu un nombre de Jetons de Priorité supérieur à 20% du nombre total de membres ET la note médiane de la Proposition d’Action est supérieure ou égale à “Bien”  |
+| Durée maximale d’inactivité d'un participant avant éviction de son groupe de travail                                 | 30 jours                                                                                                                                                                                         |
+| Durée maximale d’inactivité d’un groupe de travail avant clôture                                                     | 45 jours                                                                                                                                                                                         |
+| Durée au terme de laquelle l’Équipe de mise en œuvre d’une Proposition d’Action doit être constituée                 | 7 jours                                                                                                                                                                                          |
+| Durée de demi-vie de la note de Comportement Coopératif (= durée au terme de laquelle cette  note est divisée par 2) | 180 jours                                                                                                                                                                                        |
+| Avertissement avant une échéance                                                                                     | À fixer                                                                                                                                                                                          |
+| Quarantaine après un départ                                                                                          | 6 mois                                                                                                                                                                                           |
+| Jetons de Priorité par membre                                                                                        | 7                                                                                                                                                                                                |
+
 - **Membre** : Personne admise dans la communauté après procédure d’admisson (légère ou robuste). Connue par un pseudonyme et des clés publiques, jamais par son identité civile.
-- **Fiche de membre** : Le fichier qui représente un membre dans le dépôt de communauté : son pseudonyme, ses clés publiques, son état d'admission, ses rôles. Elle ne contient aucune donnée d'identité en clair. Lorsque l’admission se fait par mode “robuste”, elle contient le hashcode du triplet identifiant du membre (prénoms, noms, date de naissance).
+- **Fiche de membre** : Le fichier qui représente un membre dans le dépôt de communauté : son pseudonyme, ses clés publiques, son état d'admission, ses rôles. Elle ne contient aucune donnée d'identité en clair. Lorsque l’admission se fait par mode “robuste”, elle contient le hashcode du triplet identifiant du membre (prénoms, noms, date de naissance). Lorsque  l’Annuaire Distribué est actif, elle contient de surcroît la liste des pseudonymes des membres “amont” et des membres “aval” du membre. Dans ce cas, le membre conserve sur son ordinateur / son téléphone, un fichier non partagé contenant : les clefs publiques de ses membres “amont” et les adresses de courriel de ses membres “aval”.
 - **Candidat** : Personne qui a déposé sa candidature et n'est pas encore admise. Elle n’a pas accès aux contenus (ni en lecture, ni en écriture).
 - **Triplet identifiant** : Le triplet identifiant d’une personne physique est constitué de (1) son ou ses prénoms, (2) son ou ses noms de famille, (3) sa date de naissance.
 - **Admission légère** : Le processus d’admission dans lequel le système se contente de vérifier que le candidat est un humain (et non un robot).
 - **Admission robuste** : Le processus d'admission hérité de KuneAgi : des membres tirés au sort vérifient qu'un candidat est une personne réelle, que le triplet identifiant qu’elle revendique est conforme à celui de ses documents d’identité officiels, et qu’il remplit les conditions fixées pour l’appartenance à la Communaute. La vérification que la personne n'a pas déjà un compte est faite par la machine, en comparant le hashcode du triplet identifiant du candidat avec la liste des hashcodes des triplets identifiants des membres existants.
+- **Annuaire Distribué** : Dispositif permettant de reconstituer la communauté en cas de disparition de ses dépôts. Chaque membre conserve les adresses de courriel de 5 membres “amont” dont il peut recevoir des courriels légitimes d’activation, et de 5 membres “aval” auxquels il peut envoyer des courriels légitimes d’activation.
 - **Attestation** : L'avis signé qu'un membre vérificateur dépose après avoir vérifié un candidat, ou un membre qui a perdu ses clés. L'admission se décide sur les attestations réunies ; le dépôt ne garde rien d'autre de la vérification.
 - **Pseudonyme** : Le nom public d'un membre. Aucune donnée d'identité (en dehors du hashcode du triplet identifiant des membres - dans le cas d’une admission “robuste”) n'est écrite dans les dépôts.
 - **Clés** : Chaque membre détient deux paires de clés, l'une pour signer, l'autre pour recevoir des messages chiffrés. La clé privée ne quitte pas son appareil. Perdre ses clés oblige à être réadmis.
@@ -96,3 +136,5 @@ metadata_verifiees: false
 - **Centre d'intérêt** : Recherche mémorisée par un membre sur son appareil, sous forme de phrase logique connectant des étiquettes de la liste fixe, qui l'alerte quand un contenu nouveau y répond.
 - **Durée de validité d'une décision** : Délai pendant lequel on ne peut pas remettre au vote une décision déjà prise : nouvelle demande d'entrée, d'exclusion, ou nouveau signalement.
 - **Clé racine** : La clé d'origine d'une communauté, dont découle la confiance dans ses autorités.
+
+ 
